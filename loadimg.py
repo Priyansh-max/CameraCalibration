@@ -3,7 +3,7 @@ import glob
 
 # Directory where your images are stored
 def loadimage():
-    images_dir = './CameraCalibration/cameracallibration/'
+    images_dir = './cameracallibration/'
 
     # Pattern to match filenames (assuming sequential numbering from PIC_0263.jpg to PIC_0283.jpg)
     file_pattern = 'PIC_0*.jpg'  # Adjust pattern based on actual filenames
@@ -26,11 +26,10 @@ def loadimage():
     if len(images) == 0:
         print("No images loaded.")
     else:
-        print(f"Successfully loaded {len(images)} images.")
+        print()
 
     # Now 'images' list contains all loaded images from PIC_0263.jpg to PIC_0283.jpg
 
     return images
 
-print(loadimage())
 
