@@ -1,7 +1,9 @@
-
 import numpy as np
 import cv2
 import loadimg
+
+#this method is used to find the intrensic parameters of the camera in case you have the camera and you recorded your video manually 
+#it uses the Zhangs method of camera calibration
 
 def create_CM(images):
 # Define calibration pattern (e.g., a checkerboard)
