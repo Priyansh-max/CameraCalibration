@@ -55,8 +55,6 @@ def checkerror_result(extrinsic_matrix , world_points ,image_points, intrinsic_m
 
     error = np.sqrt(np.mean(np.square(image_points - image_points_reprojected)))
     
-    # reprojection_error = np.sqrt(np.mean(np.square(image_points - projected_points)))
-    
     return mean_reprojection_error , error , image_points_reprojected
 
     

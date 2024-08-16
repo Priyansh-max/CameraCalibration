@@ -3,7 +3,7 @@ import glob
 
 # Directory where your images are stored
 def loadimage():
-    images_dir = './cameracallibration/'
+    images_dir = './cameracallibration/' #change path accordingly
 
     # Pattern to match filenames (assuming sequential numbering from PIC_0263.jpg to PIC_0283.jpg)
     file_pattern = 'PIC_0*.jpg'  # Adjust pattern based on actual filenames

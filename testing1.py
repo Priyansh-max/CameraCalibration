@@ -101,15 +101,9 @@ def matrix_multiply(A, B, C):
     return result
 
 def re_testing(intrensic_matrix , extrensic_matrix , world_point):
-    print(intrensic_matrix.shape , "hi1")
-    print(extrensic_matrix.shape, "hi2")
-    print(world_point.shape, "hi3")
     world_point_4x1 = [np.array([x, y, z, 1]).reshape(4, 1) for x, y, z in world_point]
     result = []
     for i in world_point_4x1:
-        print(intrensic_matrix.shape)
-        print(extrensic_matrix.shape)
-        print(world_point_4x1.shape)
         result_imagePoint = matrix_multiply(intrensic_matrix, extrensic_matrix, i)
         result.append(result_imagePoint)
     
