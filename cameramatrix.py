@@ -26,6 +26,14 @@ def create_CM(images):
             
     # Calibrate camera to find intrinsic and extrinsic parameters
     ret, cameraMatrix, distCoeffs, rvecs, tvecs = cv2.calibrateCamera(obj_points, img_points, gray.shape[::-1], None, None)
+    
+    # cameraMatrix = np.array([[1728, 0, 864], 
+    #                       [0, 1080 , 540], 
+    #                       [0, 0, 1]], dtype=np.float32)
+    
+    # distCoeffs = np.zeros((4, 1), dtype=np.float32)
+    
+    
 
     # print(cameraMatrix)
 
@@ -52,15 +60,15 @@ def create_CM(images):
     # print(f"Mean reprojection error: {mean_error}")
     
     
-    return cameraMatrix , distCoeffs
+    return cameraMatrix , distCoeffs , mean_error
 
-# Load calibration images
 # images = loadimg.loadimage()
 
 # print(images)
 
 
-# cameraMatrix , distCoeffs = create_CM(images)
+# cameraMatrix , distCoeffs , mean_error = create_CM(images)
 
 # print("final CMans :",cameraMatrix)
 # print("FINAL dc ans :" , distCoeffs)
+# print("FINAL error ans :" , mean_error)
