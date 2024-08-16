@@ -26,49 +26,11 @@ def create_CM(images):
             
     # Calibrate camera to find intrinsic and extrinsic parameters
     ret, cameraMatrix, distCoeffs, rvecs, tvecs = cv2.calibrateCamera(obj_points, img_points, gray.shape[::-1], None, None)
-    
-    # cameraMatrix = np.array([[1728, 0, 864], 
-    #                       [0, 1080 , 540], 
-    #                       [0, 0, 1]], dtype=np.float32)
-    
-    # distCoeffs = np.zeros((4, 1), dtype=np.float32)
-    
-    
-
-    # print(cameraMatrix)
-
-    # print(distCoeffs)
-
-    # print(rvecs)
-    
-    # img_points_reprojected, _ = cv2.projectPoints(obj_points, rvecs, tvecs, cameraMatrix, distCoeffs)
-    
-    # reprojection_errors = np.sqrt(np.sum((img_points_reprojected.squeeze() - img_points)**2, axis=1))
-    # mean_reprojection_error = np.mean(reprojection_errors)
-    # print("point by point Reprojection Error:", mean_reprojection_error)
-    
-    # error = np.sqrt(np.mean(np.square(img_points_reprojected - img_points)))
-    # print("overall pose extimation Reprojection error:", error)
-
     mean_error = 0
     for i in range(len(obj_points)):
         img_points_reprojected, _ = cv2.projectPoints(obj_points[i], rvecs[i], tvecs[i], cameraMatrix, distCoeffs)
         error = cv2.norm(img_points[i], img_points_reprojected, cv2.NORM_L2) / len(img_points_reprojected)
         mean_error += error
 
-    mean_error /= len(obj_points)
-    # print(f"Mean reprojection error: {mean_error}")
-    
-    
+    mean_error /= len(obj_points)  
     return cameraMatrix , distCoeffs , mean_error
-
-# images = loadimg.loadimage()
-
-# print(images)
-
-
-# cameraMatrix , distCoeffs , mean_error = create_CM(images)
-
-# print("final CMans :",cameraMatrix)
-# print("FINAL dc ans :" , distCoeffs)
-# print("FINAL error ans :" , mean_error)
